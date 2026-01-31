@@ -22,7 +22,7 @@ export default function ProductCard({ product }: { product: Product }) {
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      <Link href={`/product/${product.slug}`} className="group block">
+      <Link href={`/product/${product.slug}`} className="group block" prefetch={false}>
         <div className="relative aspect-square overflow-hidden bg-neutral-900 mb-4">
           <Image
             src={product.image}

@@ -8,11 +8,23 @@ export default function Preloader() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // Hide preloader when everything is loaded, or at least after a short delay
+    const handleLoad = () => setLoading(false);
+    
+    if (document.readyState === "complete") {
       setLoading(false);
-    }, 2000); // 2 seconds loading time
+    } else {
+      window.addEventListener("load", handleLoad);
+      // Fallback timeout to ensure preloader doesn't stay forever
+      const timer = setTimeout(() => {
+        setLoading(false);
+      }, 800); 
 
-    return () => clearTimeout(timer);
+      return () => {
+        window.removeEventListener("load", handleLoad);
+        clearTimeout(timer);
+      };
+    }
   }, []);
 
   return (
