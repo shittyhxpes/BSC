@@ -45,8 +45,8 @@ export default async function AdminOrdersPage() {
                   })}
                 </td>
                 <td className="py-6 px-4">
-                  <div className="text-sm font-bold">{order.customerName}</div>
-                  <div className="text-xs text-neutral-500">{order.customerEmail}</div>
+                  <div className="text-sm font-bold">{order.firstName} {order.lastName}</div>
+                  <div className="text-xs text-neutral-500">{order.email}</div>
                 </td>
                 <td className="py-6 px-4">
                   <div className="flex flex-wrap gap-2">
@@ -61,7 +61,7 @@ export default async function AdminOrdersPage() {
                   </div>
                 </td>
                 <td className="py-6 px-4 font-mono font-bold">
-                  {order.totalAmount.toLocaleString()} ₽
+                  {order.total.toLocaleString()} ₽
                 </td>
                 <td className="py-6 px-4">
                   <span className={`text-[10px] font-black uppercase tracking-widest px-2 py-1 ${

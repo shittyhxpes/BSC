@@ -1,6 +1,6 @@
 "use client";
 
-import { useFormState } from "react-dom";
+import { useActionState } from "react";
 import { login } from "../actions";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -12,8 +12,7 @@ const initialState = {
 
 export default function AdminLogin() {
   const router = useRouter();
-  // @ts-ignore
-  const [state, formAction] = useFormState(login, initialState);
+  const [state, formAction] = useActionState(login, initialState);
 
   useEffect(() => {
     if (state?.success) {
