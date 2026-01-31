@@ -68,5 +68,6 @@ export default function SuccessPage({ params }: { params: { id: string } }) {
         </p>
       </div>
     </div>
+  </div>
   );
 }
