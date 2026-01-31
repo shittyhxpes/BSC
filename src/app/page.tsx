@@ -27,9 +27,10 @@ async function getProducts(category?: string, search?: string) {
   }
 }
 
-export default async function Home({ searchParams }: { searchParams: { category?: string, q?: string } }) {
-  const category = searchParams.category;
-  const search = searchParams.q;
+export default async function Home({ searchParams }: { searchParams: Promise<{ category?: string, q?: string }> }) {
+  const resolvedSearchParams = await searchParams;
+  const category = resolvedSearchParams.category;
+  const search = resolvedSearchParams.q;
   const products = await getProducts(category, search);
 
   const categories = [

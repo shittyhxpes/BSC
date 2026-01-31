@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { CheckCircle2, Package, Truck, Mail, ChevronLeft } from "lucide-react";
 
-export default function SuccessPage({ params }: { params: { id: string } }) {
+export default async function SuccessPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   return (
     <div className="min-h-screen bg-black pt-32 pb-20 px-6">
       <div className="max-w-2xl mx-auto space-y-12">
@@ -20,7 +21,7 @@ export default function SuccessPage({ params }: { params: { id: string } }) {
             Заказ принят!
           </h1>
           <p className="text-neutral-500 font-bold uppercase tracking-widest text-xs">
-            Номер вашего заказа: #{params.id}
+            Номер вашего заказа: #{id}
           </p>
         </div>
 
